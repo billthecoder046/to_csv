@@ -2,8 +2,8 @@ library to_csv;
 
 import 'dart:convert';
 
+import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:csv/csv.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
@@ -33,7 +33,6 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
     //Now that its confirmed that length of header elements and row elemnts are same lets create the csvFile
   }
 
-
   String csvData = const ListToCsvConverter()
       .convert(listOfListOfStrings);
 
@@ -56,10 +55,18 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
     anchor.click();
     html.Url.revokeObjectUrl(url);
   }
-  else if(Platform.isAndroid) {
-    Directory director = Directory('storage/emulated.0/Download');
-    final File file = await (File('${director.path}/item_export_$formattedData.csv').create());
-    await file.writeAsString(csvData);
+  else if(Platform.isAndroid || Platform.isIOS) {
+    debugPrint('1');
+/*    Directory? director = await getExternalStorageDirectory();
+    debugPrint('2');
+    final File file = await (File('${director!.path}/item_export_$formattedData.csv').create());
+    debugPrint('3');
+    await file.writeAsString(csvData).then((value) => debugPrint("File created and downloaded"));*/
+
+    final bytes = utf8.encode(csvData);
+    Uint8List bytes2 = Uint8List.fromList(bytes);
+    MimeType type = MimeType.CSV;
+    await FileSaver.instance.saveAs('item_export_$formattedData.csv', bytes2, 'csv',type);
   }
   //List name = searchedVisitorList
 }

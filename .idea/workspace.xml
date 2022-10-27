@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.metadata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/to_csv.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/to_csv_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.firebase/hosting.YnVpbGQvd2Vi.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../.firebase/hosting.YnVpbGQvd2Vi.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../lib/screens/visitors/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../lib/screens/visitors/view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/to_csv.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/to_csv.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/to_csv.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/to_csv.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +20,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2GMI86v6oFOCxKLahHUmDehCq8J" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -48,7 +52,14 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,5 +88,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
   </component>
 </project>
