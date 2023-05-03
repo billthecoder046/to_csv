@@ -55,7 +55,7 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
     anchor.click();
     html.Url.revokeObjectUrl(url);
   }
-  else if(Platform.isAndroid || Platform.isIOS) {
+  else if(Platform.isAndroid || Platform.isIOS || Platform.isWindows || Platform.isMacOS) {
     debugPrint('1');
 /*    Directory? director = await getExternalStorageDirectory();
     debugPrint('2');
@@ -65,8 +65,8 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
 
     final bytes = utf8.encode(csvData);
     Uint8List bytes2 = Uint8List.fromList(bytes);
-    MimeType type = MimeType.CSV;
-    await FileSaver.instance.saveAs('item_export_$formattedData.csv', bytes2, 'csv',type);
+    MimeType type = MimeType.csv;
+    await FileSaver.instance.saveAs(name:'item_export_$formattedData.csv',bytes: bytes2, ext:'csv',mimeType:type);
   }
   //List name = searchedVisitorList
 }

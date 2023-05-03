@@ -1,3 +1,5 @@
+## 1.1.2
+Windows bug and Filesaver package outdated is Resolved.
 ## 1.1.1
 iOS bug Resolved. Package is fully functional now...
 ## 1.1.0
