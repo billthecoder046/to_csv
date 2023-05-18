@@ -33,8 +33,14 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
     //Now that its confirmed that length of header elements and row elemnts are same lets create the csvFile
   }
 
-  String csvData = const ListToCsvConverter()
-      .convert(listOfListOfStrings);
+  //create the final list of lists containing the header and the data
+  List<List<String>> headerAndDataList = [];
+  headerAndDataList.add(headerRow);
+  for (var dataRow in listOfListOfStrings) {
+    headerAndDataList.add(dataRow);
+  }
+
+  String csvData = const ListToCsvConverter().convert(headerAndDataList);
 
   DateTime now = DateTime.now();
   String formattedData =
