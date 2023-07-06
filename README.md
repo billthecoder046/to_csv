@@ -14,9 +14,10 @@ and the Flutter guide for
 
 You can create and download a CSV/Excel file with much less code. Do not forget to like the package if this helped you...
 
+## Recent Changes in New Version
+* Downloaded CSV file can be shared to other apps now. Just add sharing property to true in myCSV function.
 
 ## How to use it?
-
 
 * Firstly, add to_csv as a dependency in your pubspec.yaml file.
 * And import this as in your dart file:

@@ -1,3 +1,5 @@
+## 1.1.3
+Downloaded CSV file can be shared now onto other apps.
 ## 1.1.2
 Windows bug and Filesaver package outdated is Resolved.
 ## 1.1.1

@@ -1,37 +1,38 @@
 library to_csv;
 
 import 'dart:convert';
-
+ 
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:csv/csv.dart';
 import 'package:intl/intl.dart';
+import 'package:share_plus/share_plus.dart';
 import 'dart:io';
-import 'package:universal_html/html.dart' as html;
+import 'package:universal_html/html.dart' as html; 
 
 
 
-myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
+myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,{bool sharing = false}) async{
   debugPrint("***** Gonna Create cv");
 
   //* A list of header
   //* A single ***list*** that will contain the list of rows   []
   //*
-  int lengthOfHeaderRow = headerRow.length;
-  int lengthOfListOfList = listOfListOfStrings.first.length;
-  bool valuesInListOfListAreSame = false;
-  if(lengthOfHeaderRow == lengthOfListOfList){
-    listOfListOfStrings.forEach((element) {
-      if(element.length == lengthOfHeaderRow){
-        valuesInListOfListAreSame = true;
-      }else{
-        valuesInListOfListAreSame = false;
-        return;
-      }
+  // int lengthOfHeaderRow = headerRow.length;
+  // int lengthOfListOfList = listOfListOfStrings.first.length;
+  //  bool valuesInListOfListAreSame = false;
+  // if(lengthOfHeaderRow == lengthOfListOfList){
+  //   listOfListOfStrings.forEach((element) {
+  //     if(element.length == lengthOfHeaderRow){
+  //       valuesInListOfListAreSame = true;
+  //     }else{
+  //       valuesInListOfListAreSame = false;
+  //       return;
+  //     }
 
-    });
-    //Now that its confirmed that length of header elements and row elemnts are same lets create the csvFile
-  }
+  //   });
+  //   //Now that its confirmed that length of header elements and row elemnts are same lets create the csvFile
+  // }
 
   //create the final list of lists containing the header and the data
   List<List<String>> headerAndDataList = [];
@@ -62,7 +63,7 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
     html.Url.revokeObjectUrl(url);
   }
   else if(Platform.isAndroid || Platform.isIOS || Platform.isWindows || Platform.isMacOS) {
-    debugPrint('1');
+  
 /*    Directory? director = await getExternalStorageDirectory();
     debugPrint('2');
     final File file = await (File('${director!.path}/item_export_$formattedData.csv').create());
@@ -72,7 +73,11 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings) async{
     final bytes = utf8.encode(csvData);
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
-    await FileSaver.instance.saveAs(name:'item_export_$formattedData.csv',bytes: bytes2, ext:'csv',mimeType:type);
+    String? unknownValue = await FileSaver.instance.saveAs(name:'item_export_$formattedData.csv',bytes: bytes2, ext:'csv',mimeType:type);
+    print("Unknown value $unknownValue");
+    if(sharing == true){ 
+        XFile xFile = XFile.fromData(bytes2); 
+        await Share.shareXFiles([xFile], text: 'Csv File');
+    }
   }
-  //List name = searchedVisitorList
 }
