@@ -73,11 +73,14 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,{bool shari
     final bytes = utf8.encode(csvData);
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
-    String? unknownValue = await FileSaver.instance.saveAs(name:'item_export_$formattedData.csv',bytes: bytes2, ext:'csv',mimeType:type);
-    print("Unknown value $unknownValue");
-    if(sharing == true){ 
-        XFile xFile = XFile.fromData(bytes2); 
-        await Share.shareXFiles([xFile], text: 'Csv File');
+
+    if (sharing == true) {
+      XFile xFile = XFile.fromData(bytes2);
+      await Share.shareXFiles([xFile], text: 'Csv File');
+    } else {
+      String? unknownValue = await FileSaver.instance
+          .saveAs(name: 'item_export_$formattedData.csv', bytes: bytes2, ext: 'csv', mimeType: type);
+      print("Unknown value $unknownValue");
     }
   }
 }
