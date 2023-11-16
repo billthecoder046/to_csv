@@ -10,7 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import 'dart:io';
 import 'package:universal_html/html.dart' as html;
 
-myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
+Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     {bool sharing = false, String? fileName, String? fileTimeStamp}) async {
   debugPrint("***** Gonna Create cv");
 
@@ -36,6 +36,12 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
   //specify file name
   String givenFileName = "${fileName ?? 'item_export'}_";
 
+  DateTime now = DateTime.now();
+
+  //allow user to specify a specific timestamp that was saved with record
+  String formattedDate =
+      fileTimeStamp ?? DateFormat('MM-dd-yyyy-HH-mm-ss').format(now);
+
   //create the final list of lists containing the header and the data
   List<List<String>> headerAndDataList = [];
   headerAndDataList.add(headerRow);
@@ -45,12 +51,6 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
 
   String csvData = const ListToCsvConverter().convert(headerAndDataList);
 
-  DateTime now = DateTime.now();
-
-  //allow user to specify a specific timestamp that was saved with record
-  String formattedData =
-      fileTimeStamp ?? DateFormat('MM-dd-yyyy-HH-mm-ss').format(now);
-
   if (kIsWeb) {
     final bytes = utf8.encode(csvData);
     final blob = html.Blob([bytes]);
@@ -58,7 +58,7 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     final anchor = html.document.createElement('a') as html.AnchorElement
       ..href = url
       ..style.display = 'none'
-      ..download = '$givenFileName$formattedData.csv';
+      ..download = '$givenFileName$formattedDate.csv';
     html.document.body!.children.add(anchor);
     anchor.click();
     html.Url.revokeObjectUrl(url);
@@ -68,7 +68,7 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
       Platform.isMacOS) {
 /*    Directory? director = await getExternalStorageDirectory();
     debugPrint('2');
-    final File file = await (File('${director!.path}/item_export_$formattedData.csv').create());
+    final File file = await (File('${director!.path}/item_export_$formattedDate.csv').create());
     debugPrint('3');
     await file.writeAsString(csvData).then((value) => debugPrint("File created and downloaded"));*/
 
@@ -76,7 +76,7 @@ myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
     String? unknownValue = await FileSaver.instance.saveAs(
-        name: '$givenFileName$formattedData',
+        name: '$givenFileName$formattedDate',
         bytes: bytes2,
         ext: 'csv',
         mimeType: type);
