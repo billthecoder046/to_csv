@@ -51,9 +51,21 @@ void main() {
         isA<AssertionError>().having(
           (e) => e.message,
           'message',
-          equals('If fileName is not null must be end with `.csv`'),
+          equals('The fileName must be end with `.csv`'),
         ),
       ),
+    );
+  });
+
+  test('Shuld not throws assertion error when `fileName` is null', () async {
+    expectLater(
+      () => toCsv(
+        ['a', 'b'],
+        [
+          ['1', '2'],
+        ],
+      ),
+      isNot(isAssertionError),
     );
   });
 }

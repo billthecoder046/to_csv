@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:csv/csv.dart';
-import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// {@macro to_csv_method}
@@ -14,14 +13,15 @@ Future<void> toCsv(
 }) async {
   assert(headerRow.isNotEmpty, 'Header row list is empty');
   assert(content.isNotEmpty, 'Content list is empty');
-  assert(
-    fileName != null && (fileName.endsWith('.csv')),
-    'If fileName is not null must be end with `.csv`',
-  );
+  if (fileName != null) {
+    assert(
+      fileName.endsWith('.csv'),
+      'The fileName must be end with `.csv`',
+    );
+  }
 
-  DateTime now = DateTime.now();
-
-  String formattedDate = DateFormat('MM-dd-yyyy-HH-mm-ss').format(now);
+  final dateTimeNow = DateTime.now();
+  final formattedDate = dateTimeNow.toIso8601String();
 
   List<List<String>> headerAndDataList = [];
   headerAndDataList.add(headerRow);
