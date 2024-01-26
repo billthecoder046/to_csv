@@ -14,7 +14,7 @@ import 'package:universal_html/html.dart' as html;
 Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     {bool sharing = false, String? fileName, String? fileTimeStamp}) async {
  
-  print("***** Gonna Create cv"); 
+  print("***** Gonna Create cv");
   String givenFileName = "${fileName ?? 'item_export'}_";
 
   DateTime now = DateTime.now();
@@ -53,8 +53,9 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
       XFile xFile = XFile.fromData(bytes2);
       await Share.shareXFiles([xFile], text: 'Csv File');
     } else {
+      String formattedData = DateTime.now().millisecondsSinceEpoch.toString();
       String? unknownValue = await FileSaver.instance
-          .saveAs(name: 'item_export_$formattedData.csv', bytes: bytes2, ext: 'csv', mimeType: type);
+          .saveAs(name: '$givenFileName$formattedDate.csv', bytes: bytes2, ext: 'csv', mimeType: type);
       print("Unknown value $unknownValue");
  
     }
