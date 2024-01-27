@@ -1,3 +1,7 @@
+##2.2.1
+Buy me coffe button re-edited
+##2.2.0
+File name being exported can be changed now
 ## 1.1.3
 Downloaded CSV file can be shared now onto other apps.
 ## 1.1.2
