@@ -15,7 +15,7 @@ and the Flutter guide for
 You can create and download a CSV/Excel file with much less code. Do not forget to like the package if this helped you...
 
 ## Recent Changes in New Version
-* Downloaded CSV file can be shared to other apps now. Just add sharing property to true in myCSV function.
+* Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
 
 ## How to use it?
 
@@ -86,6 +86,6 @@ If you need to make any changes, or find any issue please let me know on github 
 [![Buy me a Coffee ](https://wa.me/923058431046?text=I%20would%20like%20to%20buy%20you%20a%20coffee%20)](https://wa.me/923058431046?text=I%20would%20like%20to%20buy%20you%20a%20coffee%20)
 
 
-**[Hire me](wa.link/bl8cxu)**
+**[Hire me](https://wa.me/923058431046?text=I%20would%20like%20to%20hire%20you%20a%20coffee%20)**
 
-**[Check other projects,plugins and products](https://skillzupp.com/#/)**
+**[Check other projects,plugins and products](https://billthecoder.web.app/#/)**

@@ -1,3 +1,7 @@
+##3.0.1
+Description buttons re-edited.
+##3.0.0
+Supports Dart 3, compiled with Flutter 3.22.2, resolved flutter analyze issues
 ##2.2.2
 Bump intl to ^0.19.0 to work with flutter 3.22.2
 ##2.2.1
