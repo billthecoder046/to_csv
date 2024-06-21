@@ -1,3 +1,5 @@
+##2.2.2
+Bump intl to ^0.19.0 to work with flutter 3.22.2
 ##2.2.1
 Buy me coffe button re-edited
 ##2.2.0
