@@ -1,27 +1,27 @@
 library to_csv;
 
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:csv/csv.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
-import 'package:csv/csv.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
-import 'dart:io';
 import 'package:universal_html/html.dart' as html;
 
- 
 Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     {bool sharing = false, String? fileName, String? fileTimeStamp}) async {
- 
-  print("***** Gonna Create cv");
+  if (kDebugMode) {
+    print("***** Gonna Create cv");
+  }
   String givenFileName = "${fileName ?? 'item_export'}_";
 
   DateTime now = DateTime.now();
- 
+
   String formattedDate =
       fileTimeStamp ?? DateFormat('MM-dd-yyyy-HH-mm-ss').format(now);
- 
+
   List<List<String>> headerAndDataList = [];
   headerAndDataList.add(headerRow);
   for (var dataRow in listOfListOfStrings) {
@@ -30,14 +30,12 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
 
   String csvData = const ListToCsvConverter().convert(headerAndDataList);
 
- 
   if (kIsWeb) {
     final bytes = utf8.encode(csvData);
     final blob = html.Blob([bytes]);
     final url = html.Url.createObjectUrlFromBlob(blob);
     final anchor = html.document.createElement('a') as html.AnchorElement
       ..href = url
- 
       ..download = '$givenFileName$formattedDate.csv';
     html.document.body!.children.add(anchor);
     anchor.click();
@@ -45,7 +43,7 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
   } else if (Platform.isAndroid ||
       Platform.isIOS ||
       Platform.isWindows ||
-      Platform.isMacOS) { 
+      Platform.isMacOS) {
     final bytes = utf8.encode(csvData);
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
@@ -53,11 +51,14 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
       XFile xFile = XFile.fromData(bytes2);
       await Share.shareXFiles([xFile], text: 'Csv File');
     } else {
-      String formattedData = DateTime.now().millisecondsSinceEpoch.toString();
-      String? unknownValue = await FileSaver.instance
-          .saveAs(name: '$givenFileName$formattedDate.csv', bytes: bytes2, ext: 'csv', mimeType: type);
-      print("Unknown value $unknownValue");
- 
+      String? unknownValue = await FileSaver.instance.saveAs(
+          name: '$givenFileName$formattedDate.csv',
+          bytes: bytes2,
+          ext: 'csv',
+          mimeType: type);
+      if (kDebugMode) {
+        print("Unknown value $unknownValue");
+      }
     }
   }
 }
