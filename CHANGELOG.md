@@ -1,3 +1,7 @@
+##3.0.2
+Download csv file extension bug resolved i.e .csv.csv will be only .csv
+Flutter lints converted to 4.0.0
+Resolved issues when run flutter analysis
 ##3.0.1
 Description buttons re-edited.
 ##3.0.0
