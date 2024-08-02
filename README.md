@@ -82,10 +82,10 @@ If you like to contribute to this open source project, you are Welcome .
 If you need to make any changes, or find any issue please let me know on github and I will solve it.
 
 **And if you liked the package, don't forget to hit like button.**
+## Would love to hear how we can improve more this project...!
 
 [![Buy me a Coffee ](https://wa.me/923058431046?text=I%20would%20like%20to%20buy%20you%20a%20coffee%20)](https://wa.me/923058431046?text=I%20would%20like%20to%20buy%20you%20a%20coffee%20)
 
-
 **[Hire me](https://wa.me/923058431046?text=I%20would%20like%20to%20hire%20you%20a%20coffee%20)**
 
-**[Check other projects,plugins and products](https://billthecoder.web.app/#/)**
+**[Check my other projects,plugins and products](https://billthecoder.web.app/#/)**
