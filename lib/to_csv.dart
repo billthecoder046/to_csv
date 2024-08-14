@@ -48,11 +48,20 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
     if (sharing == true) {
-      XFile xFile = XFile.fromData(bytes2);
+      if (kDebugMode) {
+        print("When sharing is true");
+      }
+      final tempFile = File('$givenFileName$formattedDate.csv');
+      await tempFile.writeAsBytes(bytes2);
+
+      XFile xFile = XFile(tempFile.path);
       await Share.shareXFiles([xFile], text: 'Csv File');
+
+      // Delete the temporary file after sharing
+      await tempFile.delete();
     } else {
       String? unknownValue = await FileSaver.instance.saveAs(
-          name: '$givenFileName$formattedDate.csv',
+          name: '$givenFileName$formattedDate',
           bytes: bytes2,
           ext: 'csv',
           mimeType: type);

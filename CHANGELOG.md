@@ -1,3 +1,7 @@
+##3.0.4
+Octet-Stream issue resolved and example app added
+##3.0.3
+Intl version upgraded
 ##3.0.2
 Download csv file extension bug resolved i.e .csv.csv will be only .csv
 Flutter lints converted to 4.0.0
