@@ -7,25 +7,45 @@ import 'package:csv/csv.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart' as pth_prov;
 import 'package:share_plus/share_plus.dart';
 import 'package:universal_html/html.dart' as html;
 
 Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
-    {bool sharing = false, String? fileName, String? fileTimeStamp}) async {
+    {bool setHeadersInFirstRow = true,
+    bool includeNoRow = true,
+    bool sharing = false,
+    String? fileName,
+    String? fileTimeStamp}) async {
   if (kDebugMode) {
-    print("***** Gonna Create cv");
+    print("***** Gonna Create csv");
   }
+
   String givenFileName = "${fileName ?? 'item_export'}_";
-
   DateTime now = DateTime.now();
-
-  String formattedDate =
-      fileTimeStamp ?? DateFormat('MM-dd-yyyy-HH-mm-ss').format(now);
+  String formattedDate = fileTimeStamp ?? DateFormat('MM-dd-yyyy-HH-mm-ss').format(now);
 
   List<List<String>> headerAndDataList = [];
-  headerAndDataList.add(headerRow);
-  for (var dataRow in listOfListOfStrings) {
-    headerAndDataList.add(dataRow);
+
+  if (setHeadersInFirstRow) {
+    // Add the headers to the first row
+    headerAndDataList.add(includeNoRow ? headerRow : headerRow.sublist(1));
+
+    // Add the data rows directly
+    headerAndDataList.addAll(
+        listOfListOfStrings.map((row) => includeNoRow ? row : row.sublist(1)).toList());
+  } else {
+    // Transpose the data so that each header is the first element in its row
+    for (int i = 0; i < headerRow.length; i++) {
+      if (includeNoRow || i > 0) {
+        List<String> rowData = [headerRow[i]];
+        for (int j = 0; j < listOfListOfStrings.length; j++) {
+          rowData.add(listOfListOfStrings[j][i]);
+        }
+        headerAndDataList.add(rowData);
+      }
+    }
   }
 
   String csvData = const ListToCsvConverter().convert(headerAndDataList);
@@ -49,16 +69,24 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     MimeType type = MimeType.csv;
     if (sharing == true) {
       if (kDebugMode) {
-        print("When sharing is true");
+        print("When sharing is true Bilal Saeed 2314123123123");
       }
-      final tempFile = File('$givenFileName$formattedDate.csv');
-      await tempFile.writeAsBytes(bytes2);
 
-      XFile xFile = XFile(tempFile.path);
-      await Share.shareXFiles([xFile], text: 'Csv File');
-
-      // Delete the temporary file after sharing
-      await tempFile.delete();
+      String? unknownValue = await FileSaver.instance.saveAs(
+          name: '$givenFileName$formattedDate',
+          bytes: bytes2,
+          ext: 'csv',
+          mimeType: type);
+      if (kDebugMode) {
+        print("Unknown value $unknownValue");
+      }
+      XFile? myFile;
+      if (unknownValue != null) {
+        myFile = await convertFilePathToXFile(unknownValue);
+      }
+      if (myFile != null) {
+        await Share.shareXFiles([myFile], text: 'Csv File');
+      }
     } else {
       String? unknownValue = await FileSaver.instance.saveAs(
           name: '$givenFileName$formattedDate',
@@ -70,4 +98,29 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
       }
     }
   }
+}
+
+Future<XFile?> convertFilePathToXFile(String filePath) async {
+  // Check if the file exists
+  final file = File(filePath);
+  if (!await file.exists()) {
+    return null; // Or handle the error as needed
+  }
+
+  // Create an XFile from the file path
+  final directory = await pth_prov.getApplicationDocumentsDirectory();
+  final fileName = basename(filePath);
+  if (kDebugMode) {
+    print("file name: $fileName");
+  }
+
+  final targetPath = join(directory.path, fileName);
+  if (kDebugMode) {
+    print("My target path: $targetPath");
+  }
+
+  // Copy the file to the app's document directory (optional)
+  // This step is optional, but it can be useful for managing files within your app
+  await file.copy(targetPath);
+  return XFile(targetPath);
 }

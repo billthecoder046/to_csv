@@ -1,22 +1,7 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
 ![header](https://firebasestorage.googleapis.com/v0/b/learning-firebase-2d636.appspot.com/o/List_Array_to_CSV_Excel_File.png?alt=media&token=a0dd3779-2698-4a80-9a8a-afc21b10c5c6)
 
 You can create and download a CSV/Excel file with much less code. Do not forget to like the package if this helped you...
-
-## Recent Changes in New Version
-* Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
-
 ## How to use it?
 
 * Firstly, add to_csv as a dependency in your pubspec.yaml file.
@@ -75,17 +60,32 @@ Application supports iTunes file sharing (Boolean -> Yes)
 Supports opening documents in place (Boolean -> Yes)
 ![forIoSImage](https://raw.githubusercontent.com/incrediblezayed/file_saver/main/images/iOSXcode.png)
 
+## Recent Changes in New Version
+##### 1. Column headers can now be switched as the first element of each row.
+**When setHeadersInFirstRow is set to false like the following code:**
+```dart
+await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true, sharing: false);
+```
+**Output would be:**
+![MyCSVFormate](https://firebasestorage.googleapis.com/v0/b/billnews-c5913.appspot.com/o/Screenshot%202024-08-22%20at%209.08.29%E2%80%AFAM.png?alt=media&token=2a799f47-e886-4e71-97f7-036db0b204bb)
+**But when setHeadersInFirstRow is set to true, OUTPUT would be:**
+![MyCSVFormate](https://firebasestorage.googleapis.com/v0/b/billnews-c5913.appspot.com/o/Screenshot%202024-08-22%20at%209.13.23%E2%80%AFAM.png?alt=media&token=6346565d-ef5e-479e-ac0b-7ec557a09937)
+
+###### You can also set ```dart includeNoRow: false``` to remove No. row/column
+
+
+
+##### 2. Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
 
 ## Additional information
 
-If you like to contribute to this open source project, you are Welcome . 
+If you like to contribute to this open source project, you are Welcome .
 If you need to make any changes, or find any issue please let me know on github and I will solve it.
 
 **And if you liked the package, don't forget to hit like button.**
-## Would love to hear how we can improve more this project...!
+## Would love to hear how I can improve this package more...!
 
-[![Buy me a Coffee ](https://wa.me/923058431046?text=I%20would%20like%20to%20buy%20you%20a%20coffee%20)](https://wa.me/923058431046?text=I%20would%20like%20to%20buy%20you%20a%20coffee%20)
+| [![Buy me a Coffee ](https://firebasestorage.googleapis.com/v0/b/billnews-c5913.appspot.com/o/New%20Project%20(2).png?alt=media&token=e948c554-5825-4d3b-bf3a-8a885f6a1a74)](https://wa.me/923058431046?text=I%20would%20like%20to%2buy%20you%20a%20coffee%20) | [![Hire me](https://firebasestorage.googleapis.com/v0/b/billnews-c5913.appspot.com/o/New%20Project%20(3).png?alt=media&token=609b2a7f-46fc-4943-b267-787cbc78a1cd)](https://wa.me/923058431046?text=I%20would%20like%20to%2chire%20you%20a%20coffee%20) |
+|---|---|
 
-**[Hire me](https://wa.me/923058431046?text=I%20would%20like%20to%20hire%20you%20a%20coffee%20)**
-
-**[Check my other projects,plugins and products](https://billthecoder.web.app/#/)**
+**[Check me out here](https://www.upwork.com/freelancers/billthecoder)**

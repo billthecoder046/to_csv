@@ -1,3 +1,5 @@
+##3.0.5
+Orientation of Columns to Headers can be switched. Moreover first No. column can be skipped now!
 ##3.0.4
 Octet-Stream issue resolved and example app added
 ##3.0.3
