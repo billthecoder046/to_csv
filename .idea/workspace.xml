@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Example app added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-    </list>
+    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Adding blob" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +73,7 @@
     "git-widget-placeholder": "billCode",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/bilalsaeed/iCloud Drive (Archive) - 2/Projects/iBoxit/to_csv",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -131,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724302869072</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="//Trying to imporve">
+      <option name="closed" value="true" />
+      <created>1724305113555</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724305113555</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Adding blob">
+      <option name="closed" value="true" />
+      <created>1724305161021</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724305161021</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -154,11 +168,14 @@
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
+      <path value="$PROJECT_DIR$/example" />
     </ignored-roots>
     <MESSAGE value="Example app added and to_csv issue resolved" />
     <MESSAGE value="Orientation of Columns to Headers can be switched. Moreover first No. column can be skipped now!" />
     <MESSAGE value="Combined with ToCsv" />
     <MESSAGE value="Example app added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Example app added" />
+    <MESSAGE value="//Trying to imporve" />
+    <MESSAGE value="Adding blob" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding blob" />
   </component>
 </project>
