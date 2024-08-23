@@ -1,3 +1,7 @@
+##4.0.0
+Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row
+##3.0.6
+Path Provider version corrected
 ##3.0.5
 Orientation of Columns to Headers can be switched. Moreover first No. column can be skipped now!
 ##3.0.4

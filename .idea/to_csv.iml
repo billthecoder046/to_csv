@@ -40,6 +40,9 @@
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/path_provider_ios/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/path_provider_ios/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/ios/.symlinks/plugins/path_provider_ios/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/to_csv/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/to_csv/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/to_csv/build" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 32 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

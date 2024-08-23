@@ -12,12 +12,19 @@ import 'package:path_provider/path_provider.dart' as pth_prov;
 import 'package:share_plus/share_plus.dart';
 import 'package:universal_html/html.dart' as html;
 
-Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
-    {bool setHeadersInFirstRow = true,
-    bool includeNoRow = true,
-    bool sharing = false,
-    String? fileName,
-    String? fileTimeStamp}) async {
+Future myCSV(
+    List<String> headerRow,
+    List<List<String>> listOfListOfStrings, {
+      bool setHeadersInFirstRow = true,
+      bool includeNoRow = true,
+      bool sharing = false,
+      String? fileName,
+      String? fileTimeStamp,
+      Map<int, int>? emptyRowsConfig, // Renamed from emptyRowsAfter
+      bool removeDuplicates = false, // Check for duplicates in columns
+      bool showDuplicateValue = false, // Indicate duplicated entry
+      int? noDuplicatedCheckAfterSpecificRow, // New parameter to stop duplicate check after this row index
+    }) async {
   if (kDebugMode) {
     print("***** Gonna Create csv");
   }
@@ -31,10 +38,9 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
   if (setHeadersInFirstRow) {
     // Add the headers to the first row
     headerAndDataList.add(includeNoRow ? headerRow : headerRow.sublist(1));
-
-    // Add the data rows directly
     headerAndDataList.addAll(
-        listOfListOfStrings.map((row) => includeNoRow ? row : row.sublist(1)).toList());
+      listOfListOfStrings.map((row) => includeNoRow ? row : row.sublist(1)).toList(),
+    );
   } else {
     // Transpose the data so that each header is the first element in its row
     for (int i = 0; i < headerRow.length; i++) {
@@ -46,6 +52,59 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
         headerAndDataList.add(rowData);
       }
     }
+  }
+
+  // Remove duplicates if the removeDuplicates parameter is true
+  if (removeDuplicates) {
+    if (setHeadersInFirstRow) {
+      for (int col = 0; col < headerAndDataList[0].length; col++) {
+        Set<String> uniqueValues = {};
+        for (int row = 1; row < headerAndDataList.length; row++) {
+          // Check for duplicates only up to the specified row index
+          if (noDuplicatedCheckAfterSpecificRow != null && row > noDuplicatedCheckAfterSpecificRow) {
+            break;
+          }
+          String cellValue = headerAndDataList[row][col];
+          if (uniqueValues.contains(cellValue)) {
+            headerAndDataList[row][col] = showDuplicateValue ? "DUPLICATE" : ""; // Replace with empty value
+          } else {
+            uniqueValues.add(cellValue);
+          }
+        }
+      }
+    } else {
+      for (int row = 0; row < headerAndDataList.length; row++) {
+        Set<String> uniqueValues = {};
+        for (int col = 1; col < headerAndDataList[row].length; col++) {
+          // Check for duplicates only up to the specified row index
+          if (noDuplicatedCheckAfterSpecificRow != null && row > noDuplicatedCheckAfterSpecificRow) {
+            break;
+          }
+          String cellValue = headerAndDataList[row][col];
+          if (uniqueValues.contains(cellValue)) {
+            headerAndDataList[row][col] = showDuplicateValue ? "DUPLICATE" : ""; // Replace with empty value
+          } else {
+            uniqueValues.add(cellValue);
+          }
+        }
+      }
+    }
+  }
+
+  // Insert empty rows after the specified rows using the map
+  if (emptyRowsConfig != null) {
+    emptyRowsConfig.forEach((rowIndex, rowCount) {
+      rowIndex += emptyRowsConfig.entries
+          .where((entry) => entry.key < rowIndex)
+          .map((entry) => entry.value)
+          .fold(0, (previous, current) => previous + current);
+      if (rowIndex < headerAndDataList.length) {
+        List<String> emptyRow = List.filled(headerAndDataList[0].length, "");
+        for (int j = 0; j < rowCount; j++) {
+          headerAndDataList.insert(rowIndex + j, emptyRow);
+        }
+      }
+    });
   }
 
   String csvData = const ListToCsvConverter().convert(headerAndDataList);
@@ -68,18 +127,11 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
     if (sharing == true) {
-      if (kDebugMode) {
-        print("When sharing is true Bilal Saeed 2314123123123");
-      }
-
       String? unknownValue = await FileSaver.instance.saveAs(
           name: '$givenFileName$formattedDate',
           bytes: bytes2,
           ext: 'csv',
           mimeType: type);
-      if (kDebugMode) {
-        print("Unknown value $unknownValue");
-      }
       XFile? myFile;
       if (unknownValue != null) {
         myFile = await convertFilePathToXFile(unknownValue);
@@ -88,39 +140,25 @@ Future myCSV(List<String> headerRow, List<List<String>> listOfListOfStrings,
         await Share.shareXFiles([myFile], text: 'Csv File');
       }
     } else {
-      String? unknownValue = await FileSaver.instance.saveAs(
+      await FileSaver.instance.saveAs(
           name: '$givenFileName$formattedDate',
           bytes: bytes2,
           ext: 'csv',
           mimeType: type);
-      if (kDebugMode) {
-        print("Unknown value $unknownValue");
-      }
     }
   }
 }
 
 Future<XFile?> convertFilePathToXFile(String filePath) async {
-  // Check if the file exists
   final file = File(filePath);
   if (!await file.exists()) {
-    return null; // Or handle the error as needed
+    return null;
   }
 
-  // Create an XFile from the file path
   final directory = await pth_prov.getApplicationDocumentsDirectory();
   final fileName = basename(filePath);
-  if (kDebugMode) {
-    print("file name: $fileName");
-  }
 
   final targetPath = join(directory.path, fileName);
-  if (kDebugMode) {
-    print("My target path: $targetPath");
-  }
-
-  // Copy the file to the app's document directory (optional)
-  // This step is optional, but it can be useful for managing files within your app
   await file.copy(targetPath);
   return XFile(targetPath);
 }

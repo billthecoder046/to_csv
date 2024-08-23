@@ -60,8 +60,15 @@ Application supports iTunes file sharing (Boolean -> Yes)
 Supports opening documents in place (Boolean -> Yes)
 ![forIoSImage](https://raw.githubusercontent.com/incrediblezayed/file_saver/main/images/iOSXcode.png)
 
-## Recent Changes in New Version
-##### 1. Column headers can now be switched as the first element of each row.
+## Recent Changes in New Version 4.0.0
+##### 1. *) Added property emptyRowsConfig to add multiple empty rows on multiple places, 
+######   *) Added property removeDuplicates to remove duplicate values in data, 
+######   *) Added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row
+######   Take a look at this code:
+######  ```dart await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true,sharing: false, removeDuplicates: true, showDuplicateValue:true,noDuplicatedCheckAfterSpecificRow: 3 );```
+
+
+##### 2. Column headers can now be switched as the first element of each row.
 **When setHeadersInFirstRow is set to false like the following code:**
 ```dart
 await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true, sharing: false);
@@ -73,9 +80,7 @@ await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true, 
 
 ###### You can also set ```dart includeNoRow: false``` to remove No. row/column
 
-
-
-##### 2. Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
+##### 3. Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
 
 ## Additional information
 
