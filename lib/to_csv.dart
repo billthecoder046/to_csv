@@ -15,7 +15,7 @@ import 'package:universal_html/html.dart' as html;
 Future myCSV(
     List<String> headerRow,
     List<List<String>> listOfListOfStrings, {
-      bool setHeadersInFirstRow = true,
+      bool setHeadersInFirstRow = false,
       bool includeNoRow = true,
       bool sharing = false,
       String? fileName,
@@ -26,7 +26,6 @@ Future myCSV(
       int? noDuplicatedCheckAfterSpecificRow,
       int? transposeAfterRow, // New parameter to specify the row index after which to transpose
     }) async {
-
   if (kDebugMode) {
     print("***** Gonna Create csv");
   }
@@ -38,11 +37,13 @@ Future myCSV(
   List<List<String>> headerAndDataList = [];
 
   if (setHeadersInFirstRow) {
+    // Add the headers to the first row
     headerAndDataList.add(includeNoRow ? headerRow : headerRow.sublist(1));
     headerAndDataList.addAll(
       listOfListOfStrings.map((row) => includeNoRow ? row : row.sublist(1)).toList(),
     );
   } else {
+    // Transpose the data so that each header is the first element in its row
     for (int i = 0; i < headerRow.length; i++) {
       if (includeNoRow || i > 0) {
         List<String> rowData = [headerRow[i]];
@@ -72,8 +73,58 @@ Future myCSV(
     headerAndDataList = [...preTranspose, ...transposedData];
   }
 
-  // Duplicate removal, empty rows insertion logic, etc., remains the same
-  // ...
+  // Remove duplicates if the removeDuplicates parameter is true
+  if (removeDuplicates) {
+    if (setHeadersInFirstRow) {
+      for (int col = 0; col < headerAndDataList[0].length; col++) {
+        Set<String> uniqueValues = {};
+        for (int row = 1; row < headerAndDataList.length; row++) {
+          // Check for duplicates only up to the specified row index
+          if (noDuplicatedCheckAfterSpecificRow != null && row > noDuplicatedCheckAfterSpecificRow) {
+            break;
+          }
+          String cellValue = headerAndDataList[row][col];
+          if (uniqueValues.contains(cellValue)) {
+            headerAndDataList[row][col] = showDuplicateValue ? "DUPLICATE" : ""; // Replace with empty value
+          } else {
+            uniqueValues.add(cellValue);
+          }
+        }
+      }
+    } else {
+      for (int row = 0; row < headerAndDataList.length; row++) {
+        Set<String> uniqueValues = {};
+        for (int col = 1; col < headerAndDataList[row].length; col++) {
+          // Check for duplicates only up to the specified row index
+          if (noDuplicatedCheckAfterSpecificRow != null && row > noDuplicatedCheckAfterSpecificRow) {
+            break;
+          }
+          String cellValue = headerAndDataList[row][col];
+          if (uniqueValues.contains(cellValue)) {
+            headerAndDataList[row][col] = showDuplicateValue ? "DUPLICATE" : ""; // Replace with empty value
+          } else {
+            uniqueValues.add(cellValue);
+          }
+        }
+      }
+    }
+  }
+
+  // Insert empty rows after the specified rows using the map
+  if (emptyRowsConfig != null) {
+    emptyRowsConfig.forEach((rowIndex, rowCount) {
+      rowIndex += emptyRowsConfig.entries
+          .where((entry) => entry.key < rowIndex)
+          .map((entry) => entry.value)
+          .fold(0, (previous, current) => previous + current);
+      if (rowIndex < headerAndDataList.length) {
+        List<String> emptyRow = List.filled(headerAndDataList[0].length, "");
+        for (int j = 0; j < rowCount; j++) {
+          headerAndDataList.insert(rowIndex + j, emptyRow);
+        }
+      }
+    });
+  }
 
   String csvData = const ListToCsvConverter().convert(headerAndDataList);
 
@@ -116,6 +167,9 @@ Future myCSV(
     }
   }
 }
+
+
+
 Future<XFile?> convertFilePathToXFile(String filePath) async {
   final file = File(filePath);
   if (!await file.exists()) {

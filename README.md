@@ -62,10 +62,11 @@ Supports opening documents in place (Boolean -> Yes)
 
 ## Recent Changes in New Version 4.0.0
 ##### 1. *) Added property emptyRowsConfig to add multiple empty rows on multiple places, 
-######   *) Added property removeDuplicates to remove duplicate values in data, 
-######   *) Added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row
-######   Take a look at this code:
-######  ```dart await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true,sharing: false, removeDuplicates: true, showDuplicateValue:true,noDuplicatedCheckAfterSpecificRow: 3 );```
+#####    *) Added property removeDuplicates to remove duplicate values in data, 
+#####    *) Added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row
+#####    *) Data can be transposed now from a specific row
+#####    Take a look at this code:
+#####   ```dart await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true,sharing: false, removeDuplicates: true, showDuplicateValue:true,noDuplicatedCheckAfterSpecificRow: 3 );```
 
 
 ##### 2. Column headers can now be switched as the first element of each row.

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row">
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
+    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Columns can be transposed from a specific row now!">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/to_csv.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/to_csv.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +168,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724420394343</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Columns can be transposed from a specific row now!">
+      <option name="closed" value="true" />
+      <created>1724735944938</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1724735944938</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Columns can be transposed from a specific row now!">
+      <option name="closed" value="true" />
+      <created>1724736028748</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1724736028748</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -197,6 +217,7 @@
     <MESSAGE value="Adding blob" />
     <MESSAGE value="Comments Removed" />
     <MESSAGE value="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row" />
+    <MESSAGE value="Columns can be transposed from a specific row now!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Columns can be transposed from a specific row now!" />
   </component>
 </project>

@@ -1,3 +1,7 @@
+##4.0.2
+Data can be transposed now from a specific row - Bug resolved
+##4.0.1
+Data can be transposed now from a specific row
 ##4.0.0
 Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row
 ##3.0.6
