@@ -121,7 +121,6 @@ Future<XFile?> convertFilePathToXFile(String filePath) async {
   if (!await file.exists()) {
     return null;
   }
-
   final directory = await pth_prov.getApplicationDocumentsDirectory();
   final fileName = basename(filePath);
 
