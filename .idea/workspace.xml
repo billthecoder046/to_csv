@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Comments Removed">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/to_csv.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/to_csv.iml" afterDir="false" />
+    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row">
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/to_csv.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/to_csv.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724305522339</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row">
+      <option name="closed" value="true" />
+      <created>1724420394343</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724420394343</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -195,6 +196,7 @@
     <MESSAGE value="//Trying to imporve" />
     <MESSAGE value="Adding blob" />
     <MESSAGE value="Comments Removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments Removed" />
+    <MESSAGE value="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added property emptyRowsConfig to add multiple empty rows on multiple places, added property removeDuplicates to remove duplicate values in data, added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row" />
   </component>
 </project>
