@@ -21,8 +21,8 @@ header.add('ID Number');
 * Also create a two lists which contains your list of rows as List<String>
 ```dart
   List<List<String>> listOfLists = []; //Outter List which contains the data List
-  List<String> data1 = ['1','Bilal Saeed','1374934','912839812']; //Inner list which contains Data i.e Row
-  List<String> data2 = ['2','Ahmar','21341234','192834821']; //Inner list which contains Data i.e Row
+List<String> data1 = ['1','Bilal Saeed','1374934','912839812']; //Inner list which contains Data i.e Row
+List<String> data2 = ['2','Ahmar','21341234','192834821']; //Inner list which contains Data i.e Row
 ```
 **Note: Length of elements present in Rows should be equal to the length of header list length**
 
@@ -61,12 +61,13 @@ Supports opening documents in place (Boolean -> Yes)
 ![forIoSImage](https://raw.githubusercontent.com/incrediblezayed/file_saver/main/images/iOSXcode.png)
 
 ## Recent Changes in New Version 4.0.0
-##### 1. *) Added property emptyRowsConfig to add multiple empty rows on multiple places, 
-#####    *) Added property removeDuplicates to remove duplicate values in data, 
+##### 1. *) Added property emptyRowsConfig to add multiple empty rows on multiple places,
+#####    *) Added property removeDuplicates to remove duplicate values in data,
 #####    *) Added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row
 #####    *) Data can be transposed now from a specific row
 #####    Take a look at this code:
-#####   ```dart await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true,sharing: false, removeDuplicates: true, showDuplicateValue:true,noDuplicatedCheckAfterSpecificRow: 3 );```
+#####   ```
+           dart await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true,sharing: false, removeDuplicates: true, showDuplicateValue:true,noDuplicatedCheckAfterSpecificRow: 3 );```
 
 
 ##### 2. Column headers can now be switched as the first element of each row.
@@ -81,7 +82,20 @@ await  myCSV(header, listOfLists,setHeadersInFirstRow:false,includeNoRow: true, 
 
 ###### You can also set ```dart includeNoRow: false``` to remove No. row/column
 
-##### 3. Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
+##### 3. You can also **[design your csv like this](https://firebasestorage.googleapis.com/v0/b/billnews-c5913.appspot.com/o/Screenshot%202024-08-28%20at%205.00.07%E2%80%AFPM.png?alt=media&token=c86f7032-2feb-4fa1-a6b9-472fa254a522)**
+#####  by using this code:
+```dart     
+   await myCSV(header, listOfLists,
+sharing: false,
+setHeadersInFirstRow: false,
+fileName: "myProjectCSV-",
+removeDuplicates: true,
+showDuplicateValue: false,
+emptyRowsConfig: {11: 2},
+noDuplicatedCheckAfterSpecificRow: 10,
+transposeAfterRow: 11);
+ ```
+##### 4. Compatible with Dart 3 now. Compiled with Flutter 3.22.2 ##3.0.0 & resolved all flutter analyze issues
 
 ## Additional information
 
