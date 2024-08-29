@@ -28,6 +28,7 @@ Future myCSV(
       bool showDuplicateValue = false, // Flag to show the word "DUPLICATE" instead of removing it.
       int? noDuplicatedCheckAfterSpecificRow, // Row index after which duplicate checks will stop.
       int? transposeAfterRow, // Row index after which the data will be transposed.
+      bool ascendSortAfterTpOnFirstValue = false
     }
     ) async {
   if (kDebugMode) {
@@ -76,6 +77,22 @@ Future myCSV(
     }
 
     headerAndDataList = [...preTranspose, ...transposedData];
+    if(ascendSortAfterTpOnFirstValue == true){
+      for(int j =transposeAfterRow+1; j<headerAndDataList.length-1;j++) {
+        for (int i = transposeAfterRow + 1; i < headerAndDataList.length - 1; i++) {
+          var firstValue = int.parse(headerAndDataList[i][0]);
+          var secondValue = int.parse(headerAndDataList[i + 1][0]);
+          if (firstValue > secondValue) {
+            var temp;
+            temp = headerAndDataList[i];
+            headerAndDataList[i] = headerAndDataList[i + 1];
+            headerAndDataList[i + 1] = temp;
+          }
+        }
+      }
+    }
+
+
   }
 
   // Remove duplicates if the removeDuplicates flag is true.
