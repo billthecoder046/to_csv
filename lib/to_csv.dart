@@ -63,11 +63,11 @@ Future myCSV(
 
   // Transpose the data after a specific row, if the parameter is set.
   if (transposeAfterRow != null && transposeAfterRow < headerAndDataList.length) {
+
     List<List<String>> preTranspose = headerAndDataList.sublist(0, transposeAfterRow);
     List<List<String>> toTranspose = headerAndDataList.sublist(transposeAfterRow);
 
     List<List<String>> transposedData = [];
-
     for (int i = 0; i < toTranspose[0].length; i++) {
       List<String> newRow = [];
       for (int j = 0; j < toTranspose.length; j++) {
@@ -91,8 +91,6 @@ Future myCSV(
         }
       }
     }
-
-
   }
 
   // Remove duplicates if the removeDuplicates flag is true.
