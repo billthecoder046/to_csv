@@ -1,5 +1,5 @@
 ##4.0.4
-S
+Sort in ascending order after transpose is done, just need to pass  ascendSortAfterTpOnFirstValue = true
 ##4.0.3
 Comments added to the code
 ##4.0.2
