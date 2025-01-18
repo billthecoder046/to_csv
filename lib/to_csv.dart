@@ -28,7 +28,8 @@ Future myCSV(
       bool showDuplicateValue = false, // Flag to show the word "DUPLICATE" instead of removing it.
       int? noDuplicatedCheckAfterSpecificRow, // Row index after which duplicate checks will stop.
       int? transposeAfterRow, // Row index after which the data will be transposed.
-      bool ascendSortAfterTpOnFirstValue = false
+      bool ascendSortAfterTpOnFirstValue = false,
+      String fieldDelimiter = ','//Flag to decide how content should be seperated
     }
     ) async {
   if (kDebugMode) {
@@ -147,7 +148,7 @@ Future myCSV(
   }
 
   // Convert the list of data into a CSV formatted string.
-  String csvData = const ListToCsvConverter().convert(headerAndDataList);
+  String csvData = ListToCsvConverter(fieldDelimiter: fieldDelimiter).convert(headerAndDataList);
 
   // Save or share the CSV file depending on the platform.
   if (kIsWeb) {
