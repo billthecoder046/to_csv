@@ -29,7 +29,8 @@ Future myCSV(
       int? noDuplicatedCheckAfterSpecificRow, // Row index after which duplicate checks will stop.
       int? transposeAfterRow, // Row index after which the data will be transposed.
       bool ascendSortAfterTpOnFirstValue = false,
-      String fieldDelimiter = ','//Flag to decide how content should be seperated
+      String fieldDelimiter = ',', //Flag to decide how content should be seperated
+      Encoding encodingType = utf8 //Flag to set the encoding type of the content
     }
     ) async {
   if (kDebugMode) {
@@ -153,7 +154,7 @@ Future myCSV(
   // Save or share the CSV file depending on the platform.
   if (kIsWeb) {
     // For web platforms, create a downloadable link for the CSV file.
-    final bytes = utf8.encode(csvData);
+    final bytes = encodingType.encode(csvData);
     final blob = html.Blob([bytes]);
     final url = html.Url.createObjectUrlFromBlob(blob);
     final anchor = html.document.createElement('a') as html.AnchorElement
@@ -167,7 +168,7 @@ Future myCSV(
       Platform.isWindows ||
       Platform.isMacOS) {
     // For mobile and desktop platforms, save the CSV file and optionally share it.
-    final bytes = utf8.encode(csvData);
+    final bytes = encodingType.encode(csvData);
     Uint8List bytes2 = Uint8List.fromList(bytes);
     MimeType type = MimeType.csv;
     if (sharing == true) {
