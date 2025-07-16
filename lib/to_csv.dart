@@ -87,7 +87,7 @@ Future myCSV(
           var firstValue = int.parse(headerAndDataList[i][0]);
           var secondValue = int.parse(headerAndDataList[i + 1][0]);
           if (firstValue > secondValue) {
-            var temp;
+            List<String> temp;
             temp = headerAndDataList[i];
             headerAndDataList[i] = headerAndDataList[i + 1];
             headerAndDataList[i + 1] = temp;

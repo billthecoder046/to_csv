@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_csv/to_csv.dart' as exportCSV;
+import 'package:to_csv/to_csv.dart' as export_csv;
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<String> data1 = ['1','Bilal Saeed','1374934','912839812']; //Inner list which contains Data i.e Row
   List<String> data2 = ['2','Ahmar','21341234','192834821']; //Inner list which contains Data i.e Row
 
-  _addHeaderToList(){
+  void _addHeaderToList(){
     header.add('No.');
     header.add('User Name');
     header.add('Mobile');
@@ -43,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
     listOfLists.add(data1);
     listOfLists.add(data2);
   }
-  _downloadFile(){
-    exportCSV.myCSV(header, listOfLists, sharing: true);
+  void _downloadFile(){
+    export_csv.myCSV(header, listOfLists, sharing: true);
   }
 
 
