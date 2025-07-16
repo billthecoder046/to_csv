@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Sort in ascending order after transpose is done, just need to pass  ascendSortAfterTpOnFirstValue = true">
-      <change afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+    <list default="true" id="cafbf3db-c04c-43a7-be6c-298acac3a509" name="Default Changelist" comment="Example of to_csv is added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/to_csv.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/to_csv.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,7 +215,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724933279995</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Example of to_csv is added">
+      <option name="closed" value="true" />
+      <created>1752645498157</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1752645498157</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Example of to_csv is added">
+      <option name="closed" value="true" />
+      <created>1752645669023</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1752645669023</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -256,6 +267,7 @@
     <MESSAGE value="Columns can be transposed from a specific row now!" />
     <MESSAGE value="Columns can be transposed from a specific row now 2!" />
     <MESSAGE value="Sort in ascending order after transpose is done, just need to pass  ascendSortAfterTpOnFirstValue = true" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sort in ascending order after transpose is done, just need to pass  ascendSortAfterTpOnFirstValue = true" />
+    <MESSAGE value="Example of to_csv is added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Example of to_csv is added" />
   </component>
 </project>

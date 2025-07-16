@@ -60,7 +60,7 @@ Application supports iTunes file sharing (Boolean -> Yes)
 Supports opening documents in place (Boolean -> Yes)
 ![forIoSImage](https://raw.githubusercontent.com/incrediblezayed/file_saver/main/images/iOSXcode.png)
 
-## Recent Changes in New Version 4.0.0
+## Important Updates
 ##### 1. *) Added property emptyRowsConfig to add multiple empty rows on multiple places,
 #####    *) Added property removeDuplicates to remove duplicate values in data,
 #####    *) Added noDuplicatedCheckAfterSpecificRow to stopChecking duplicate rows after a certain row

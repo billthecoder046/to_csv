@@ -1,3 +1,5 @@
+##6.0.0
+Latest Breaking release!
 ##5.0.6
 All dependency are updated to latest
 ##4.0.4
