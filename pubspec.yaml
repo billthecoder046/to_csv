@@ -1,6 +1,6 @@
 name: to_csv
 description: This flutter package will help you to create a csv/excel file for your data in flutter framework application.
-version: 4.0.4
+version: 5.0.6
 homepage: https://github.com/bilalsaeedjh/to_csv
 
 environment:
@@ -10,14 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  intl: ^0.19.0
-  csv: ^5.0.2
-  universal_html: ^2.0.8
-  file_saver: ^0.2.1
+  flutter_lints: ^6.0.0
+  intl: ^0.20.2
+  csv: ^6.0.0
+  universal_html: ^2.2.4
+  file_saver: ^0.3.1
   share_plus: ^7.0.2 
-  path: ^1.8.3
-  path_provider: ^2.1.3
+  path: ^1.9.1
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:

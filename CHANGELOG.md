@@ -1,3 +1,5 @@
+##5.0.6
+All dependency are updated to latest
 ##4.0.4
 Sort in ascending order after transpose is done, just need to pass  ascendSortAfterTpOnFirstValue = true
 ##4.0.3

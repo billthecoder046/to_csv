@@ -9,30 +9,33 @@ import 'package:file_saver/file_saver.dart'; // Library to save files on various
 import 'package:flutter/foundation.dart'; // Provides foundational classes and functions.
 import 'package:intl/intl.dart'; // Library for internationalization and formatting dates.
 import 'package:path/path.dart'; // Library to handle file paths across platforms.
-import 'package:path_provider/path_provider.dart' as pth_prov; // Library to get the common paths.
+import 'package:path_provider/path_provider.dart'
+    as pth_prov; // Library to get the common paths.
 import 'package:share_plus/share_plus.dart'; // Library to share content on different platforms.
-import 'package:universal_html/html.dart' as html; // Library for handling HTML elements in Flutter Web.
+import 'package:universal_html/html.dart'
+    as html; // Library for handling HTML elements in Flutter Web.
 
 // Function to generate and save/share a CSV file based on the provided data.
 Future myCSV(
     List<String> headerRow, // List of header titles.
     List<List<String>> listOfListOfStrings, // 2D list containing the data rows.
-        {
-      bool setHeadersInFirstRow = false, // Flag to decide if headers should be in the first row.
-      bool includeNoRow = true, // Flag to include the first column (row numbers).
-      bool sharing = false, // Flag to decide whether to share the file after creation.
-      String? fileName, // Optional custom file name.
-      String? fileTimeStamp, // Optional timestamp for the file name.
-      Map<int, int>? emptyRowsConfig, // Map to insert empty rows after specific rows.
-      bool removeDuplicates = false, // Flag to remove duplicate values in the CSV.
-      bool showDuplicateValue = false, // Flag to show the word "DUPLICATE" instead of removing it.
-      int? noDuplicatedCheckAfterSpecificRow, // Row index after which duplicate checks will stop.
-      int? transposeAfterRow, // Row index after which the data will be transposed.
-      bool ascendSortAfterTpOnFirstValue = false,
-      String fieldDelimiter = ',', //Flag to decide how content should be seperated
-      Encoding encodingType = utf8 //Flag to set the encoding type of the content
-    }
-    ) async {
+    {bool setHeadersInFirstRow =
+        false, // Flag to decide if headers should be in the first row.
+    bool includeNoRow = true, // Flag to include the first column (row numbers).
+    bool sharing = false, // Flag to decide whether to share the file after creation.
+    String? fileName, // Optional custom file name.
+    String? fileTimeStamp, // Optional timestamp for the file name.
+    Map<int, int>? emptyRowsConfig, // Map to insert empty rows after specific rows.
+    bool removeDuplicates = false, // Flag to remove duplicate values in the CSV.
+    bool showDuplicateValue =
+        false, // Flag to show the word "DUPLICATE" instead of removing it.
+    int?
+        noDuplicatedCheckAfterSpecificRow, // Row index after which duplicate checks will stop.
+    int? transposeAfterRow, // Row index after which the data will be transposed.
+    bool ascendSortAfterTpOnFirstValue = false,
+    String fieldDelimiter = ',', //Flag to decide how content should be seperated
+    Encoding encodingType = utf8 //Flag to set the encoding type of the content
+    }) async {
   if (kDebugMode) {
     print("***** Gonna Create csv");
   }
@@ -65,7 +68,6 @@ Future myCSV(
 
   // Transpose the data after a specific row, if the parameter is set.
   if (transposeAfterRow != null && transposeAfterRow < headerAndDataList.length) {
-
     List<List<String>> preTranspose = headerAndDataList.sublist(0, transposeAfterRow);
     List<List<String>> toTranspose = headerAndDataList.sublist(transposeAfterRow);
 
@@ -79,8 +81,8 @@ Future myCSV(
     }
 
     headerAndDataList = [...preTranspose, ...transposedData];
-    if(ascendSortAfterTpOnFirstValue == true){
-      for(int j =transposeAfterRow+1; j<headerAndDataList.length-1;j++) {
+    if (ascendSortAfterTpOnFirstValue == true) {
+      for (int j = transposeAfterRow + 1; j < headerAndDataList.length - 1; j++) {
         for (int i = transposeAfterRow + 1; i < headerAndDataList.length - 1; i++) {
           var firstValue = int.parse(headerAndDataList[i][0]);
           var secondValue = int.parse(headerAndDataList[i + 1][0]);
@@ -102,12 +104,15 @@ Future myCSV(
       for (int col = 0; col < headerAndDataList[0].length; col++) {
         Set<String> uniqueValues = {};
         for (int row = 1; row < headerAndDataList.length; row++) {
-          if (noDuplicatedCheckAfterSpecificRow != null && row > noDuplicatedCheckAfterSpecificRow) {
+          if (noDuplicatedCheckAfterSpecificRow != null &&
+              row > noDuplicatedCheckAfterSpecificRow) {
             break;
           }
           String cellValue = headerAndDataList[row][col];
           if (uniqueValues.contains(cellValue)) {
-            headerAndDataList[row][col] = showDuplicateValue ? "DUPLICATE" : ""; // Replace duplicates with empty value or "DUPLICATE".
+            headerAndDataList[row][col] = showDuplicateValue
+                ? "DUPLICATE"
+                : ""; // Replace duplicates with empty value or "DUPLICATE".
           } else {
             uniqueValues.add(cellValue);
           }
@@ -118,7 +123,8 @@ Future myCSV(
       for (int row = 0; row < headerAndDataList.length; row++) {
         Set<String> uniqueValues = {};
         for (int col = 1; col < headerAndDataList[row].length; col++) {
-          if (noDuplicatedCheckAfterSpecificRow != null && row > noDuplicatedCheckAfterSpecificRow) {
+          if (noDuplicatedCheckAfterSpecificRow != null &&
+              row > noDuplicatedCheckAfterSpecificRow) {
             break;
           }
           String cellValue = headerAndDataList[row][col];
@@ -149,7 +155,8 @@ Future myCSV(
   }
 
   // Convert the list of data into a CSV formatted string.
-  String csvData = ListToCsvConverter(fieldDelimiter: fieldDelimiter).convert(headerAndDataList);
+  String csvData =
+      ListToCsvConverter(fieldDelimiter: fieldDelimiter).convert(headerAndDataList);
 
   // Save or share the CSV file depending on the platform.
   if (kIsWeb) {
@@ -175,8 +182,8 @@ Future myCSV(
       String? unknownValue = await FileSaver.instance.saveAs(
           name: '$givenFileName$formattedDate',
           bytes: bytes2,
-          ext: 'csv',
-          mimeType: type);
+          mimeType: type,
+          fileExtension: 'csv');
       XFile? myFile;
       if (unknownValue != null) {
         myFile = await convertFilePathToXFile(unknownValue);
@@ -188,8 +195,8 @@ Future myCSV(
       await FileSaver.instance.saveAs(
           name: '$givenFileName$formattedDate',
           bytes: bytes2,
-          ext: 'csv',
-          mimeType: type);
+
+          mimeType: type, fileExtension: 'csv');
     }
   }
 }
